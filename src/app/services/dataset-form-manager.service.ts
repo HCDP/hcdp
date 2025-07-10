@@ -1529,10 +1529,6 @@ class Dataset<T extends DatasetItem> {
   }
 
   private addItem(item: T) {
-    setTimeout(() => {
-      console.log(item.rasterParams);
-    }, 10);
-    
     item.dataset = this;
     let values = item.values;
     let tree = this._itemMap;
