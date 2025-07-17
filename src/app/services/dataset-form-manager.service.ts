@@ -161,7 +161,7 @@ export class DatasetFormManagerService {
       dsmDynamical,
       dsmStatistical
     ]);
-    let climateNode = new FormNode(new DisplayData("The climate model used to predict future data.", "Future Climate Model", "model"), [
+    let climateNode = new FormNode(new DisplayData("The climate model used to predict future data.", "Future Scenario", "model"), [
       climateRCP45,
       climateRCP85
     ]);
