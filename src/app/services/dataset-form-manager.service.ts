@@ -97,6 +97,35 @@ export class DatasetFormManagerService {
       lead: "lead03"
     }, [true, true]);
 
+    //timescales
+    let timescale001 = new FormValue(new DisplayData("1-month SPI timescale", "1 Month", "timescale001"), {
+      timescale: "timescale001"
+    }, [true, true]);
+    let timescale003 = new FormValue(new DisplayData("3-month SPI timescale", "3 Month", "timescale003"), {
+      timescale: "timescale003"
+    }, [true, true]);
+    let timescale006 = new FormValue(new DisplayData("6-month SPI timescale", "6 Month", "timescale006"), {
+      timescale: "timescale006"
+    }, [true, true]);
+    let timescale009 = new FormValue(new DisplayData("9-month SPI timescale", "9 Month", "timescale009"), {
+      timescale: "timescale009"
+    }, [true, true]);
+    let timescale012 = new FormValue(new DisplayData("12-month SPI timescale", "12 Month", "timescale012"), {
+      timescale: "timescale012"
+    }, [true, true]);
+    let timescale024 = new FormValue(new DisplayData("24-month SPI timescale", "24 Month", "timescale024"), {
+      timescale: "timescale024"
+    }, [true, true]);
+    let timescale036 = new FormValue(new DisplayData("36-month SPI timescale", "36 Month", "timescale036"), {
+      timescale: "timescale036"
+    }, [true, true]);
+    let timescale048 = new FormValue(new DisplayData("48-month SPI timescale", "48 Month", "timescale048"), {
+      timescale: "timescale048"
+    }, [true, true]);
+    let timescale060 = new FormValue(new DisplayData("60-month SPI timescale", "60 Month", "timescale060"), {
+      timescale: "timescale060"
+    }, [true, true]);
+
     ////values
     //////spatial extents
     let statewideSpatialExtent = new FormValue(new DisplayData("Data covering the entire state of Hawaiʻi.", "Statewide", "statewide"), {
@@ -234,6 +263,7 @@ export class DatasetFormManagerService {
     let extentDisplayData = new DisplayData("The area of coverage for the data.", "Spatial Extent", "extent");
     let leadDisplayData = new DisplayData("The lead time for future condition predictions. Lead time 0 represents the computed data for the given date using emperical data. Higher lead times indicate future predictions from the date with the lead number indicating the number of periods after the date being predicted. These are predictions made on the current date and may not exactly mirror the computed values for the date being predicted", "Prediction Lead Time", "lead");
     let unitsDisplayData = new DisplayData("The units the data are represented in.", "Units", "units");
+    let timescaleDisplayData = new DisplayData("SPI can be computed over different time scales, reflecting various types of drought. For example, a 1-month timescale and is useful for assessing short-term conditions such as soil moisture. In contrast, a 12-month period and is better suited for detecting long-term droughts.", "Timescale", "timescale");
 
     let extentNode = new FormNode(extentDisplayData, [statewideSpatialExtent, hawaiiSpatialExtent, mauiSpatialExtent, honoluluSpatialExtent, kauaiSpatialExtent]);
     let rfUnitsNode = new FormNode(unitsDisplayData, [mmUnits, inUnits, percentUnits]);
@@ -243,6 +273,8 @@ export class DatasetFormManagerService {
     let tempdsUnitsNode = new FormNode(unitsDisplayData, [cUnits, fUnits]);
     //let percentUnitsNode = new FormNode(unitsDisplayData, [percentUnits]);
     let leadNode = new FormNode(leadDisplayData, [lead00, leadDay01, leadDay02, leadDay03], lead00);
+
+    let timescaleNode = new FormNode(timescaleDisplayData, [timescale001, timescale003, timescale006, timescale009, timescale012, timescale024, timescale036, timescale048, timescale060], timescale001);
 
     let rfdsMap = {
       percent: null,
@@ -307,6 +339,10 @@ export class DatasetFormManagerService {
       periodNode,
       leadNode
     ], []);
+    let spiFormData = new FormData([
+      periodNode,
+      timescaleNode
+    ], []);
     let rhFormData = new FormData([
       periodNode
     ], [
@@ -349,6 +385,15 @@ export class DatasetFormManagerService {
     let ignitionProbLead01TimeseriesData = new TimeseriesData(dayPeriod, monthPeriod, this.dateHandler);
     let ignitionProbLead02TimeseriesData = new TimeseriesData(dayPeriod, monthPeriod, this.dateHandler);
     let ignitionProbLead03TimeseriesData = new TimeseriesData(dayPeriod, monthPeriod, this.dateHandler);
+    let spiTimescale001TimeseriesData = new TimeseriesData(monthPeriod, yearPeriod, this.dateHandler);
+    let spiTimescale003TimeseriesData = new TimeseriesData(monthPeriod, yearPeriod, this.dateHandler);
+    let spiTimescale006TimeseriesData = new TimeseriesData(monthPeriod, yearPeriod, this.dateHandler);
+    let spiTimescale009TimeseriesData = new TimeseriesData(monthPeriod, yearPeriod, this.dateHandler);
+    let spiTimescale012TimeseriesData = new TimeseriesData(monthPeriod, yearPeriod, this.dateHandler);
+    let spiTimescale024TimeseriesData = new TimeseriesData(monthPeriod, yearPeriod, this.dateHandler);
+    let spiTimescale036TimeseriesData = new TimeseriesData(monthPeriod, yearPeriod, this.dateHandler);
+    let spiTimescale048TimeseriesData = new TimeseriesData(monthPeriod, yearPeriod, this.dateHandler);
+    let spiTimescale060TimeseriesData = new TimeseriesData(monthPeriod, yearPeriod, this.dateHandler);
     let rhTimeseriesData = new TimeseriesData(dayPeriod, monthPeriod, this.dateHandler);
 
 
@@ -734,6 +779,44 @@ export class DatasetFormManagerService {
       lead: "lead03"
     }, null, this.requestFactory);
 
+    //spi
+    let spiMonthTimescale001 = new VisDatasetItem(false, true, "", "", "Standardized Precipitation Index (SPI)", "Standardized Precipitation Index (SPI)", [-3, 3], [false, false], spiTimescale001TimeseriesData, [spiTimescale001TimeseriesData], false, {
+      period: "month",
+      timescale: "timescale001"
+    }, null, this.requestFactory);
+    let spiMonthTimescale003 = new VisDatasetItem(false, true, "", "", "Standardized Precipitation Index (SPI)", "Standardized Precipitation Index (SPI)", [-3, 3], [false, false], spiTimescale003TimeseriesData, [spiTimescale003TimeseriesData], false, {
+      period: "month",
+      timescale: "timescale003"
+    }, null, this.requestFactory);
+    let spiMonthTimescale006 = new VisDatasetItem(false, true, "", "", "Standardized Precipitation Index (SPI)", "Standardized Precipitation Index (SPI)", [-3, 3], [false, false], spiTimescale006TimeseriesData, [spiTimescale006TimeseriesData], false, {
+      period: "month",
+      timescale: "timescale006"
+    }, null, this.requestFactory);
+    let spiMonthTimescale009 = new VisDatasetItem(false, true, "", "", "Standardized Precipitation Index (SPI)", "Standardized Precipitation Index (SPI)", [-3, 3], [false, false], spiTimescale009TimeseriesData, [spiTimescale009TimeseriesData], false, {
+      period: "month",
+      timescale: "timescale009"
+    }, null, this.requestFactory);
+    let spiMonthTimescale012 = new VisDatasetItem(false, true, "", "", "Standardized Precipitation Index (SPI)", "Standardized Precipitation Index (SPI)", [-3, 3], [false, false], spiTimescale012TimeseriesData, [spiTimescale012TimeseriesData], false, {
+      period: "month",
+      timescale: "timescale012"
+    }, null, this.requestFactory);
+    let spiMonthTimescale024 = new VisDatasetItem(false, true, "", "", "Standardized Precipitation Index (SPI)", "Standardized Precipitation Index (SPI)", [-3, 3], [false, false], spiTimescale024TimeseriesData, [spiTimescale024TimeseriesData], false, {
+      period: "month",
+      timescale: "timescale024"
+    }, null, this.requestFactory);
+    let spiMonthTimescale036 = new VisDatasetItem(false, true, "", "", "Standardized Precipitation Index (SPI)", "Standardized Precipitation Index (SPI)", [-3, 3], [false, false], spiTimescale036TimeseriesData, [spiTimescale036TimeseriesData], false, {
+      period: "month",
+      timescale: "timescale036"
+    }, null, this.requestFactory);
+    let spiMonthTimescale048 = new VisDatasetItem(false, true, "", "", "Standardized Precipitation Index (SPI)", "Standardized Precipitation Index (SPI)", [-3, 3], [false, false], spiTimescale048TimeseriesData, [spiTimescale048TimeseriesData], false, {
+      period: "month",
+      timescale: "timescale048"
+    }, null, this.requestFactory);
+    let spiMonthTimescale060 = new VisDatasetItem(false, true, "", "", "Standardized Precipitation Index (SPI)", "Standardized Precipitation Index (SPI)", [-3, 3], [false, false], spiTimescale060TimeseriesData, [spiTimescale060TimeseriesData], false, {
+      period: "month",
+      timescale: "timescale060"
+    }, null, this.requestFactory);
+
     ////Datasets
     let rainfallDatasetDisplayData = new DisplayData("Rainfall data (1990 - present).", "Rainfall", "rainfall");
     let legacyRainfallDatasetDisplayData = new DisplayData("Legacy rainfall data based on older production methods (1920 - 2012).", "Legacy Rainfall", "legacy_rainfall");
@@ -745,6 +828,7 @@ export class DatasetFormManagerService {
     let ndviDatasetDisplayData = new DisplayData("Normalized Difference Vegetation Index", "NDVI", "ndvi");
     let rhDatasetDisplayData = new DisplayData("Relative humidity data", "Relative Humidity", "rh");
     let ignitionProbDatasetDisplayData = new DisplayData("Probability of large (8+ acre) fire ignition based on current and past climate conditions", "Ignition Probability", "ignition_probability");
+    let spiDatasetDisplayData = new DisplayData("The Standardized Precipitation Index (SPI) is a drought index based solely on rainfall data. It is calculated by fitting a gamma probability distribution to long-term precipitation records and standardizing the results. Values below -1 are typically classified as drought conditions. The more negative the SPI value, the more severe the drought.", "Standardized Precipitation Index (SPI)", "spi");
 
     let contemporaryRainfallClimatologyDatasetDisplayData = new DisplayData("Mean rainfall climatologies", "Mean Rainfall", "contemporary_mean_rf_climatology");
     let legacyRainfallClimatologyDatasetDisplayData = new DisplayData("Mean rainfall climatologies", "Mean Rainfall", "legacy_mean_rf_climatology");
@@ -815,6 +899,20 @@ export class DatasetFormManagerService {
       ignitionProbDayLead02,
       ignitionProbDayLead03
     ]);
+    let spiVisDataset = new Dataset<VisDatasetItem>(spiDatasetDisplayData, {
+      datatype: "spi"
+    }, spiFormData, [
+      spiMonthTimescale001,
+      spiMonthTimescale003,
+      spiMonthTimescale006,
+      spiMonthTimescale009,
+      spiMonthTimescale012,
+      spiMonthTimescale024,
+      spiMonthTimescale036,
+      spiMonthTimescale048,
+      spiMonthTimescale060
+    ]);
+    spiFormData
 
     let contemporaryRainfallClimatologyVisDataset = new Dataset<VisDatasetItem>(contemporaryRainfallClimatologyDatasetDisplayData, {
       datatype: "contemporary_climatology",
@@ -880,6 +978,7 @@ export class DatasetFormManagerService {
     let stationPartialDisplayData = new DisplayData("Processed station data including each station's metadata and values over a period of time", "Station Data", "station_data");
     let ndviDisplayData = new DisplayData("A gridded normalized difference vegetation index (NDVI) map representing estimated values over the state of Hawaiʻi.", "NDVI Map", "data_map");
     let ignitionProbMapDisplayData = new DisplayData("A gridded ignition probability map representing the likelihood of large (8+ acre) fire ignition based on current and past climate conditions over the state of Hawaiʻi.", "Ignition Probability Map", "data_map");
+    let spiMapDisplayData = new DisplayData("A gridded standardized precipitation index (SPI) map representing a drought index based solely on rainfall data. It is calculated by fitting a gamma probability distribution to long-term precipitation records and standardizing the results.", "SPI Map", "data_map");
     let rhMapDisplayData = new DisplayData("A gridded relative humidity map representing estimated relative humidity percentages over the state of Hawaiʻi.", "Relative Humidity Map", "data_map");
     let climatologyRainfallMapDisplayData = new DisplayData("A gridded map displaying the average estimated rainfall over the selected time period.", "Rainfall Map", "data_map");
     let climatologyTemperatureMapDisplayData = new DisplayData("A gridded map displaying the average estimated mean temperature over the selected time period.", "Temperature Map", "data_map");
@@ -935,6 +1034,7 @@ export class DatasetFormManagerService {
     let ndviMapFile = new FileData(ndviDisplayData, geotiffFtype, []);
     let rhMapFile = new FileData(rhMapDisplayData, geotiffFtype, ["metadata"]);
     let ignitionProbMapFile = new FileData(ignitionProbMapDisplayData, geotiffFtype, ["metadata"]);
+    let spiMapFile = new FileData(spiMapDisplayData, geotiffFtype, []);
     let legacyClimatologyRainfallMapFile = new FileData(climatologyRainfallMapDisplayData, geotiffFtype, ["metadata"]);
     let legacyClimatologyTemperatureMapFile = new FileData(climatologyTemperatureMapDisplayData, geotiffFtype, ["metadata"]);
     let contemporaryClimatologyRainfallMapFile = new FileData(climatologyRainfallMapDisplayData, geotiffFtype, []);
@@ -973,6 +1073,7 @@ export class DatasetFormManagerService {
 
     let ignitionProbMapGroup = new FileGroup(new DisplayData("", "", "ae"), [ignitionProbMapFile, metadataFile], [allExtentProperty]);
     let ignitionProbPredictionMapGroup = new FileGroup(new DisplayData("", "", "af"), [ignitionProbMapFile], [allExtentProperty]);
+    let spiMapGroup = new FileGroup(new DisplayData("", "", "ag"), [spiMapFile], [statewideProperty]);
 
     let contemporaryClimatologyRainfallMonthFileGroup = new FileGroup(new DisplayData("", "", "u"), [contemporaryClimatologyRainfallMapFile], [statewideProperty, monthContemporaryClimatologyProperty]);
     let contemporaryClimatologyRainfallDecadeFileGroup = new FileGroup(new DisplayData("", "", "v"), [contemporaryClimatologyRainfallMapFile], [statewideProperty, decadalClimatologyProperty]);
@@ -1042,6 +1143,43 @@ export class DatasetFormManagerService {
       period: "day",
       lead: "lead03"
     }, "Daily Ignition Probability", ignitionProbLead03TimeseriesData, this.requestFactory);
+    //spi
+    let spiMonthTimescale001ExportItem = new ExportDatasetItem([spiMapGroup], {
+      period: "month",
+      timescale: "timescale001"
+    }, "Monthly SPI", spiTimescale001TimeseriesData, this.requestFactory);
+    let spiMonthTimescale003ExportItem = new ExportDatasetItem([spiMapGroup], {
+      period: "month",
+      timescale: "timescale003"
+    }, "Monthly SPI", spiTimescale003TimeseriesData, this.requestFactory);
+    let spiMonthTimescale006ExportItem = new ExportDatasetItem([spiMapGroup], {
+      period: "month",
+      timescale: "timescale006"
+    }, "Monthly SPI", spiTimescale006TimeseriesData, this.requestFactory);
+    let spiMonthTimescale009ExportItem = new ExportDatasetItem([spiMapGroup], {
+      period: "month",
+      timescale: "timescale009"
+    }, "Monthly SPI", spiTimescale009TimeseriesData, this.requestFactory);
+    let spiMonthTimescale012ExportItem = new ExportDatasetItem([spiMapGroup], {
+      period: "month",
+      timescale: "timescale012"
+    }, "Monthly SPI", spiTimescale012TimeseriesData, this.requestFactory);
+    let spiMonthTimescale024ExportItem = new ExportDatasetItem([spiMapGroup], {
+      period: "month",
+      timescale: "timescale024"
+    }, "Monthly SPI", spiTimescale024TimeseriesData, this.requestFactory);
+    let spiMonthTimescale036ExportItem = new ExportDatasetItem([spiMapGroup], {
+      period: "month",
+      timescale: "timescale036"
+    }, "Monthly SPI", spiTimescale036TimeseriesData, this.requestFactory);
+    let spiMonthTimescale048ExportItem = new ExportDatasetItem([spiMapGroup], {
+      period: "month",
+      timescale: "timescale048"
+    }, "Monthly SPI", spiTimescale048TimeseriesData, this.requestFactory);
+    let spiMonthTimescale060ExportItem = new ExportDatasetItem([spiMapGroup], {
+      period: "month",
+      timescale: "timescale060"
+    }, "Monthly SPI", spiTimescale060TimeseriesData, this.requestFactory);
     ////ds
     //////DS Rainfall
 
@@ -1235,6 +1373,19 @@ export class DatasetFormManagerService {
       ignitionProbDayLead02ExportItem,
       ignitionProbDayLead03ExportItem
     ]);
+    let spiExportDataset = new Dataset<ExportDatasetItem>(spiDatasetDisplayData, {
+      datatype: "spi"
+    }, spiFormData, [
+      spiMonthTimescale001ExportItem,
+      spiMonthTimescale003ExportItem,
+      spiMonthTimescale006ExportItem,
+      spiMonthTimescale009ExportItem,
+      spiMonthTimescale012ExportItem,
+      spiMonthTimescale024ExportItem,
+      spiMonthTimescale036ExportItem,
+      spiMonthTimescale048ExportItem,
+      spiMonthTimescale060ExportItem
+    ]);
 
     let contemporaryClimatologyRainfallExportDataset = new Dataset<ExportDatasetItem>(contemporaryRainfallClimatologyDatasetDisplayData, {
       datatype: "contemporary_climatology",
@@ -1320,8 +1471,8 @@ export class DatasetFormManagerService {
     let legacyClimatologyGrouperDisplayData = new DisplayData("Legacy Climatologies.", "Legacy Climatology", "legacy_climatology");
     let datasetFormDisplayData = new DisplayData("Select the type of data you would like to view. Hover over an option for a description of the dataset.", "Dataset", "dataset");
     //vis dataset groups
-    let visDatasets = [rainfallVisDataset, legacyRainfallVisDataset, maxTemperatureVisDataset, minTemperatureVisDataset, meanTemperatureVisDataset, dsRainfallVisDataset, dsTemperatureVisDataset, ndviVisDataset, rhVisDataset, ignitionProbVisDataset, contemporaryRainfallClimatologyVisDataset, legacyRainfallClimatologyVisDataset, contemporaryMeanTemperatureClimatologyVisDataset, contemporaryMaxTemperatureClimatologyVisDataset, contemporaryMinTemperatureClimatologyVisDataset, legacyMeanTemperatureClimatologyVisDataset, legacyMaxTemperatureClimatologyVisDataset, legacyMinTemperatureClimatologyVisDataset];
-    let visDatasetSingles: Dataset<VisDatasetItem>[] = [ndviVisDataset, rhVisDataset, ignitionProbVisDataset];
+    let visDatasets = [rainfallVisDataset, legacyRainfallVisDataset, maxTemperatureVisDataset, minTemperatureVisDataset, meanTemperatureVisDataset, dsRainfallVisDataset, dsTemperatureVisDataset, ndviVisDataset, rhVisDataset, ignitionProbVisDataset, spiVisDataset, contemporaryRainfallClimatologyVisDataset, legacyRainfallClimatologyVisDataset, contemporaryMeanTemperatureClimatologyVisDataset, contemporaryMaxTemperatureClimatologyVisDataset, contemporaryMinTemperatureClimatologyVisDataset, legacyMeanTemperatureClimatologyVisDataset, legacyMaxTemperatureClimatologyVisDataset, legacyMinTemperatureClimatologyVisDataset];
+    let visDatasetSingles: Dataset<VisDatasetItem>[] = [ndviVisDataset, rhVisDataset, ignitionProbVisDataset, spiVisDataset];
     let visDatasetGroupers: DatasetSelectorGroup[] = [
       new DatasetSelectorGroup(historicalRainfallGrouperDisplayData, [rainfallVisDataset, legacyRainfallVisDataset]),
       new DatasetSelectorGroup(historicalTemperatureGrouperDisplayData, [maxTemperatureVisDataset, minTemperatureVisDataset, meanTemperatureVisDataset]),
@@ -1332,8 +1483,8 @@ export class DatasetFormManagerService {
     let visDatasetFormData = new DatasetFormData(datasetFormDisplayData, visDatasetSingles, visDatasetGroupers);
 
     //export dataset groups
-    let exportDatasets = [rainfallExportDataset, legacyRainfallExportDataset, maxTemperatureExportDataset, minTemperatureExportDataset, meanTemperatureExportDataset, dsRainfallExportDataset, dsTemperatureExportDataset, ndviExportDataset, rhExportDataset, ignitionProbExportDataset, contemporaryClimatologyRainfallExportDataset, legacyClimatologyRainfallExportDataset, contemporaryClimatologyMeanTemperatureExportDataset, contemporaryClimatologyMaxTemperatureExportDataset, contemporaryClimatologyMinTemperatureExportDataset, legacyClimatologyMeanTemperatureExportDataset, legacyClimatologyMaxTemperatureExportDataset, legacyClimatologyMinTemperatureExportDataset];
-    let exportDatasetSingles: Dataset<ExportDatasetItem>[] = [ndviExportDataset, rhExportDataset, ignitionProbExportDataset];
+    let exportDatasets = [rainfallExportDataset, legacyRainfallExportDataset, maxTemperatureExportDataset, minTemperatureExportDataset, meanTemperatureExportDataset, dsRainfallExportDataset, dsTemperatureExportDataset, ndviExportDataset, rhExportDataset, ignitionProbExportDataset, spiExportDataset, contemporaryClimatologyRainfallExportDataset, legacyClimatologyRainfallExportDataset, contemporaryClimatologyMeanTemperatureExportDataset, contemporaryClimatologyMaxTemperatureExportDataset, contemporaryClimatologyMinTemperatureExportDataset, legacyClimatologyMeanTemperatureExportDataset, legacyClimatologyMaxTemperatureExportDataset, legacyClimatologyMinTemperatureExportDataset];
+    let exportDatasetSingles: Dataset<ExportDatasetItem>[] = [ndviExportDataset, rhExportDataset, ignitionProbExportDataset, spiExportDataset];
     let exportDatasetGroupers: DatasetSelectorGroup[] = [
       new DatasetSelectorGroup(historicalRainfallGrouperDisplayData, [rainfallExportDataset, legacyRainfallExportDataset]),
       new DatasetSelectorGroup(historicalTemperatureGrouperDisplayData, [maxTemperatureExportDataset, minTemperatureExportDataset, meanTemperatureExportDataset]),
