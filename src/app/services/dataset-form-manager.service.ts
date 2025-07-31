@@ -98,31 +98,31 @@ export class DatasetFormManagerService {
     }, [true, true]);
 
     //timescales
-    let timescale001 = new FormValue(new DisplayData("1-month SPI timescale", "1 Month", "timescale001"), {
+    let timescale001 = new FormValue(new DisplayData("1-month SPI timescale (SPI-1)", "1 Month", "timescale001"), {
       timescale: "timescale001"
     }, [true, true]);
-    let timescale003 = new FormValue(new DisplayData("3-month SPI timescale", "3 Month", "timescale003"), {
+    let timescale003 = new FormValue(new DisplayData("3-month SPI timescale (SPI-3)", "3 Month", "timescale003"), {
       timescale: "timescale003"
     }, [true, true]);
-    let timescale006 = new FormValue(new DisplayData("6-month SPI timescale", "6 Month", "timescale006"), {
+    let timescale006 = new FormValue(new DisplayData("6-month SPI timescale (SPI-6)", "6 Month", "timescale006"), {
       timescale: "timescale006"
     }, [true, true]);
-    let timescale009 = new FormValue(new DisplayData("9-month SPI timescale", "9 Month", "timescale009"), {
+    let timescale009 = new FormValue(new DisplayData("9-month SPI timescale (SPI-9)", "9 Month", "timescale009"), {
       timescale: "timescale009"
     }, [true, true]);
-    let timescale012 = new FormValue(new DisplayData("12-month SPI timescale", "12 Month", "timescale012"), {
+    let timescale012 = new FormValue(new DisplayData("12-month SPI timescale (SPI-12)", "12 Month", "timescale012"), {
       timescale: "timescale012"
     }, [true, true]);
-    let timescale024 = new FormValue(new DisplayData("24-month SPI timescale", "24 Month", "timescale024"), {
+    let timescale024 = new FormValue(new DisplayData("24-month SPI timescale (SPI-24)", "24 Month", "timescale024"), {
       timescale: "timescale024"
     }, [true, true]);
-    let timescale036 = new FormValue(new DisplayData("36-month SPI timescale", "36 Month", "timescale036"), {
+    let timescale036 = new FormValue(new DisplayData("36-month SPI timescale (SPI-36)", "36 Month", "timescale036"), {
       timescale: "timescale036"
     }, [true, true]);
-    let timescale048 = new FormValue(new DisplayData("48-month SPI timescale", "48 Month", "timescale048"), {
+    let timescale048 = new FormValue(new DisplayData("48-month SPI timescale (SPI-48)", "48 Month", "timescale048"), {
       timescale: "timescale048"
     }, [true, true]);
-    let timescale060 = new FormValue(new DisplayData("60-month SPI timescale", "60 Month", "timescale060"), {
+    let timescale060 = new FormValue(new DisplayData("60-month SPI timescale (SPI-60)", "60 Month", "timescale060"), {
       timescale: "timescale060"
     }, [true, true]);
 
