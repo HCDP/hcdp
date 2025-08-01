@@ -29,6 +29,7 @@ export class LeafletLayerControlExtensionComponent implements OnInit, OnChanges 
     usgs: "USGS",
     viridis: "Viridis",
     turbo: "Turbo",
+    diverging: "Diverging",
     tacc3: "TACC 3-wave",
     tacc4: "TACC 4-wave",
     tacc5: "TACC 5-wave"
