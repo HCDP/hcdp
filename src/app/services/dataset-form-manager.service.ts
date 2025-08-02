@@ -757,7 +757,7 @@ export class DatasetFormManagerService {
     }
 
     //////NDVI
-    let ndvi = new VisDatasetItem(false, true, "", "", "NDVI", "NDVI", [-0.2, 1], [false, true], ndviTimeseriesData, [ndviTimeseriesData], false, {
+    let ndvi = new VisDatasetItem(false, true, "", "", "Normalized Difference Vegetation Index (NDVI)", "Normalized Difference Vegetation Index (NDVI)", [-0.2, 1], [false, true], ndviTimeseriesData, [ndviTimeseriesData], false, {
       period: "day"
     }, null, this.requestFactory);
 
@@ -780,39 +780,39 @@ export class DatasetFormManagerService {
     }, null, this.requestFactory);
 
     //spi
-    let spiMonthTimescale001 = new VisDatasetItem(false, true, "", "", "Standardized Precipitation Index (SPI)", "Standardized Precipitation Index (SPI)", [-3, 3], [false, false], spiTimescale001TimeseriesData, [spiTimescale001TimeseriesData], false, {
+    let spiMonthTimescale001 = new VisDatasetItem(false, true, "", "", "1-Month Standardized Precipitation Index (SPI-1)", "1-Month Standardized Precipitation Index (SPI-1)", [-3, 3], [false, false], spiTimescale001TimeseriesData, [spiTimescale001TimeseriesData], false, {
       period: "month",
       timescale: "timescale001"
     }, null, this.requestFactory);
-    let spiMonthTimescale003 = new VisDatasetItem(false, true, "", "", "Standardized Precipitation Index (SPI)", "Standardized Precipitation Index (SPI)", [-3, 3], [false, false], spiTimescale003TimeseriesData, [spiTimescale003TimeseriesData], false, {
+    let spiMonthTimescale003 = new VisDatasetItem(false, true, "", "", "3-Month Standardized Precipitation Index (SPI-3)", "3-Month Standardized Precipitation Index (SPI-3)", [-3, 3], [false, false], spiTimescale003TimeseriesData, [spiTimescale003TimeseriesData], false, {
       period: "month",
       timescale: "timescale003"
     }, null, this.requestFactory);
-    let spiMonthTimescale006 = new VisDatasetItem(false, true, "", "", "Standardized Precipitation Index (SPI)", "Standardized Precipitation Index (SPI)", [-3, 3], [false, false], spiTimescale006TimeseriesData, [spiTimescale006TimeseriesData], false, {
+    let spiMonthTimescale006 = new VisDatasetItem(false, true, "", "", "6-Month Standardized Precipitation Index (SPI-6)", "6-Month Standardized Precipitation Index (SPI-6)", [-3, 3], [false, false], spiTimescale006TimeseriesData, [spiTimescale006TimeseriesData], false, {
       period: "month",
       timescale: "timescale006"
     }, null, this.requestFactory);
-    let spiMonthTimescale009 = new VisDatasetItem(false, true, "", "", "Standardized Precipitation Index (SPI)", "Standardized Precipitation Index (SPI)", [-3, 3], [false, false], spiTimescale009TimeseriesData, [spiTimescale009TimeseriesData], false, {
+    let spiMonthTimescale009 = new VisDatasetItem(false, true, "", "", "9-Month Standardized Precipitation Index (SPI-9)", "9-Month Standardized Precipitation Index (SPI-9)", [-3, 3], [false, false], spiTimescale009TimeseriesData, [spiTimescale009TimeseriesData], false, {
       period: "month",
       timescale: "timescale009"
     }, null, this.requestFactory);
-    let spiMonthTimescale012 = new VisDatasetItem(false, true, "", "", "Standardized Precipitation Index (SPI)", "Standardized Precipitation Index (SPI)", [-3, 3], [false, false], spiTimescale012TimeseriesData, [spiTimescale012TimeseriesData], false, {
+    let spiMonthTimescale012 = new VisDatasetItem(false, true, "", "", "12-Month Standardized Precipitation Index (SPI-12)", "12-Month Standardized Precipitation Index (SPI-12)", [-3, 3], [false, false], spiTimescale012TimeseriesData, [spiTimescale012TimeseriesData], false, {
       period: "month",
       timescale: "timescale012"
     }, null, this.requestFactory);
-    let spiMonthTimescale024 = new VisDatasetItem(false, true, "", "", "Standardized Precipitation Index (SPI)", "Standardized Precipitation Index (SPI)", [-3, 3], [false, false], spiTimescale024TimeseriesData, [spiTimescale024TimeseriesData], false, {
+    let spiMonthTimescale024 = new VisDatasetItem(false, true, "", "", "24-Month Standardized Precipitation Index (SPI-24)", "24-Month Standardized Precipitation Index (SPI-24)", [-3, 3], [false, false], spiTimescale024TimeseriesData, [spiTimescale024TimeseriesData], false, {
       period: "month",
       timescale: "timescale024"
     }, null, this.requestFactory);
-    let spiMonthTimescale036 = new VisDatasetItem(false, true, "", "", "Standardized Precipitation Index (SPI)", "Standardized Precipitation Index (SPI)", [-3, 3], [false, false], spiTimescale036TimeseriesData, [spiTimescale036TimeseriesData], false, {
+    let spiMonthTimescale036 = new VisDatasetItem(false, true, "", "", "36-Month Standardized Precipitation Index (SPI-36)", "36-Month Standardized Precipitation Index (SPI-36)", [-3, 3], [false, false], spiTimescale036TimeseriesData, [spiTimescale036TimeseriesData], false, {
       period: "month",
       timescale: "timescale036"
     }, null, this.requestFactory);
-    let spiMonthTimescale048 = new VisDatasetItem(false, true, "", "", "Standardized Precipitation Index (SPI)", "Standardized Precipitation Index (SPI)", [-3, 3], [false, false], spiTimescale048TimeseriesData, [spiTimescale048TimeseriesData], false, {
+    let spiMonthTimescale048 = new VisDatasetItem(false, true, "", "", "48-Month Standardized Precipitation Index (SPI-48)", "48-Month Standardized Precipitation Index (SPI-48)", [-3, 3], [false, false], spiTimescale048TimeseriesData, [spiTimescale048TimeseriesData], false, {
       period: "month",
       timescale: "timescale048"
     }, null, this.requestFactory);
-    let spiMonthTimescale060 = new VisDatasetItem(false, true, "", "", "Standardized Precipitation Index (SPI)", "Standardized Precipitation Index (SPI)", [-3, 3], [false, false], spiTimescale060TimeseriesData, [spiTimescale060TimeseriesData], false, {
+    let spiMonthTimescale060 = new VisDatasetItem(false, true, "", "", "60-Month Standardized Precipitation Index (SPI-60)", "60-Month Standardized Precipitation Index (SPI-60)", [-3, 3], [false, false], spiTimescale060TimeseriesData, [spiTimescale060TimeseriesData], false, {
       period: "month",
       timescale: "timescale060"
     }, null, this.requestFactory);
@@ -825,7 +825,7 @@ export class DatasetFormManagerService {
     let meanTemperatureDatasetDisplayData = new DisplayData("Temperature data aggregated to its average value over the time period.", "Mean Temperature", "mean_temp");
     let dsRainfallDatasetDisplayData = new DisplayData("Downscaled future projections for rainfall data.", "Rainfall Projections", "ds_rainfall");
     let dsTemperatureDatasetDisplayData = new DisplayData("Downscaled future projections for temperature data.", "Temperature Projections", "ds_temp");
-    let ndviDatasetDisplayData = new DisplayData("Normalized Difference Vegetation Index", "NDVI", "ndvi");
+    let ndviDatasetDisplayData = new DisplayData("NDVI is used to quantify vegetation greenness and is useful in understanding vegetation density and assessing changes in plant health. NDVI is calculated as a ratio between the red (R) and near infrared (NIR) values", "Normalized Difference Vegetation Index (NDVI)", "ndvi");
     let rhDatasetDisplayData = new DisplayData("Relative humidity data", "Relative Humidity", "rh");
     let ignitionProbDatasetDisplayData = new DisplayData("Probability of large (8+ acre) fire ignition based on current and past climate conditions", "Ignition Probability", "ignition_probability");
     let spiDatasetDisplayData = new DisplayData("The Standardized Precipitation Index (SPI) is a drought index based solely on rainfall data. It is calculated by fitting a gamma probability distribution to long-term precipitation records and standardizing the results. Values below -1 are typically classified as drought conditions. The more negative the SPI value, the more severe the drought.", "Standardized Precipitation Index (SPI)", "spi");
