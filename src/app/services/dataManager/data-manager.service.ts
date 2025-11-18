@@ -134,12 +134,18 @@ export class DataManagerService {
         //convert numeric fields to numbers
         stationMetadata.elevation_m = Number(stationMetadata.elevation_m);
         stationMetadata.lat = Number(stationMetadata.lat);
-        stationMetadata.lng = Number(stationMetadata.lng);
-        let metadata = new StationMetadata(id_field, stationMetadata);
-        //yay for inconsistent data
-        //value docs may have decimals that do not match, standardize id formats
-        let standardizedID = this.getStandardizedNumericString(metadata.id);
-        metadataMap[standardizedID] = metadata;
+        stationMetadata.lng = Number(stationMetadata.lng)
+        try {
+          let metadata = new StationMetadata(id_field, stationMetadata);
+
+          //yay for inconsistent data
+          //value docs may have decimals that do not match, standardize id formats
+          let standardizedID = this.getStandardizedNumericString(metadata.id);
+          metadataMap[standardizedID] = metadata;
+        }
+        catch(e) {
+          console.error(`Got invalid metadata object: `, stationMetadata);
+        }
       }
       this.paramService.pushMetadata(Object.values(metadataMap));
       return metadataMap;

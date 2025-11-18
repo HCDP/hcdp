@@ -161,7 +161,7 @@ export class StationMetadata {
     constructor(idField: string, data: {[field: string]: MetadataValue}) {
         this._idField = idField;
         //validate data, must have id and lat lng at the bare minimum
-        if(!data[idField]|| !data.lat || !data.lng) {
+        if(!(data[idField] && typeof data.lat == "number" && typeof data.lng == "number")) {
             throw new Error("Invalid metadata");
         }
         this._data = data;
