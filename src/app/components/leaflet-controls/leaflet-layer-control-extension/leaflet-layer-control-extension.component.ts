@@ -32,7 +32,8 @@ export class LeafletLayerControlExtensionComponent implements OnInit, OnChanges 
     diverging: "Diverging",
     tacc3: "TACC 3-wave",
     tacc4: "TACC 4-wave",
-    tacc5: "TACC 5-wave"
+    tacc5: "TACC 5-wave",
+    fema: "FEMA"
   }
 
   private lastDiverging = "diverging";
@@ -253,6 +254,12 @@ export class LeafletLayerControlExtensionComponent implements OnInit, OnChanges 
       }
       case "rainbow": {
         let colorScheme = this.colors.getDefaultRainbowRainfallColorScale(range, reverseColors);
+        let data: [string, ColorScale] = [scheme, colorScheme]
+        p = Promise.resolve(data);
+        break;
+      }
+      case "fema": {
+        let colorScheme = this.colors.getDefaultFemaColorScale(range, reverseColors);
         let data: [string, ColorScale] = [scheme, colorScheme]
         p = Promise.resolve(data);
         break;
