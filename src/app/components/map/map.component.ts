@@ -14,6 +14,7 @@ import { VisDatasetItem } from 'src/app/services/dataset-form-manager.service';
 import { DataManagerService } from 'src/app/services/dataManager/data-manager.service';
 import { MapLocation, Station, V_Station } from 'src/app/models/Stations';
 import { Moment } from "moment-timezone";
+import { StringMap } from 'src/app/models/types';
 
 @Component({
   selector: 'app-map',
@@ -43,6 +44,7 @@ export class MapComponent implements OnInit {
   colorScheme: ColorScale;
   roseOptions: RoseControlOptions;
   options: L.MapOptions;
+  datasetOptions: StringMap;
 
   map: L.Map;
   private baseLayers: any;
@@ -527,7 +529,9 @@ export class MapComponent implements OnInit {
 
 
   ngOnInit() {
-
+    this.paramService.createParameterHook(EventParamRegistrarService.EVENT_TAGS.options, (datasetOptions: StringMap) => {
+      this.datasetOptions = datasetOptions;
+    });
   }
 
   initMarkerInfo() {

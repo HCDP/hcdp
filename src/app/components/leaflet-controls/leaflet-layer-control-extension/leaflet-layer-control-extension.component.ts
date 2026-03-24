@@ -58,6 +58,7 @@ export class LeafletLayerControlExtensionComponent implements OnInit, OnChanges 
   @Output() colorScheme: EventEmitter<ColorScale>;
   @Input() defaultScheme: string;
   @Input() dataset: VisDatasetItem;
+  @Input() options: StringMap;
 
   @Input() set map(map: Map) {
     if(map) {
@@ -104,6 +105,7 @@ export class LeafletLayerControlExtensionComponent implements OnInit, OnChanges 
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    console.log("change");
     if(this.dataset.displayStyle == "standard") {
       this.baseColorSchemes = this.directColorSchemes;
       this.schemeControl.setValue(this.lastDirect);
