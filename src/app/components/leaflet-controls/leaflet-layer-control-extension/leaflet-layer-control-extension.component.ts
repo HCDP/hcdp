@@ -19,6 +19,7 @@ import { StringMap } from 'src/app/models/types';
 export class LeafletLayerControlExtensionComponent implements OnInit, OnChanges {
 
   private _map: Map;
+  private _defaultScheme: string;
   public control: Control.Layers;
   private layers: Layer;
   public schemeControl: FormControl;
@@ -53,12 +54,19 @@ export class LeafletLayerControlExtensionComponent implements OnInit, OnChanges 
   private forbiddenNames: Set<string>;
   private debounce: boolean;
 
-  @Input() opacity: number;
   @Output() opacityChange: EventEmitter<number>;
   @Output() colorScheme: EventEmitter<ColorScale>;
-  @Input() defaultScheme: string;
+  
+  @Input() opacity: number;
   @Input() dataset: VisDatasetItem;
   @Input() options: StringMap;
+
+  @Input() set defaultScheme(defaultScheme: string) {
+    if(defaultScheme) {
+      this._defaultScheme = defaultScheme;
+      this.schemeControl.setValue(defaultScheme);
+    }
+  }
 
   @Input() set map(map: Map) {
     if(map) {
@@ -134,7 +142,7 @@ export class LeafletLayerControlExtensionComponent implements OnInit, OnChanges 
     this.forbiddenNames.delete(name);
     //if deleting the active color scheme reset to the default scheme
     if(this.schemeControl.value == tag) {
-      this.schemeControl.setValue(this.defaultScheme);
+      this.schemeControl.setValue(this._defaultScheme);
     }
   }
 
@@ -194,7 +202,7 @@ export class LeafletLayerControlExtensionComponent implements OnInit, OnChanges 
             let reversionValue = chain.getLastValidValue();
             //no valid value, revert to default, should be impossible
             if(reversionValue === null) {
-              reversionValue = this.defaultScheme
+              reversionValue = this._defaultScheme
             }
             this.schemeControl.setValue(reversionValue);
           }
@@ -202,7 +210,7 @@ export class LeafletLayerControlExtensionComponent implements OnInit, OnChanges 
       }
 
     });
-    this.schemeControl.setValue(this.defaultScheme);
+    this.schemeControl.setValue(this._defaultScheme);
   }
 
   ngOnDestroy() {
@@ -470,7 +478,7 @@ export class LeafletLayerControlExtensionComponent implements OnInit, OnChanges 
         //failsafe, should never happen (should only happen if reverting after deletion, before default loads, which should be pretty much impossible in practice), but keep just in case
         //just return recursive call with default scheme
         else {
-          p = this.getColorScheme(this.defaultScheme);
+          p = this.getColorScheme(this._defaultScheme);
         }
       }
     }

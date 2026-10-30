@@ -38,6 +38,8 @@ export class MapComponent implements OnInit {
   };
   //private R: any = L;
 
+  defaultColorScheme: string = "viridis";
+
   selectedMapCell: L.Layer;
   imageHiddenControls = ["leaflet-control-zoom", "leaflet-control-layers", "leaflet-control-export"];
   markerInfo: RainfallStationMarkerInfo;
@@ -274,6 +276,12 @@ export class MapComponent implements OnInit {
     this.paramService.createParameterHook(EventParamRegistrarService.EVENT_TAGS.dataset, (dataset: VisDatasetItem) => {
       this.active.data.dateLabel = null;
       this.dataset = dataset;
+      if(dataset.baseParams.datatype == "spi") {
+        this.defaultColorScheme = "diverging";
+      }
+      else {
+        this.defaultColorScheme = "viridis";
+      }
     });
 
     //install hover handler (requires raster to be set to work, start disabled)
